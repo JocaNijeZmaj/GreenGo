@@ -1,0 +1,90 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.navToolbar {
+  display: flex;
+  justify-content: space-between;
+}
+.icons {
+  display: flex;
+  gap: 5vw;
+  margin-right: 4rem;
+  transform: scale(1.5);
+}
+.icons mat-icon:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+.active {
+  background: black;
+}
+.mat-nav-list a.active {
+  background: blue;
+}
+.a4 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  mat-icon {
+    margin-top: 0.2rem;
+    margin-left: 0.5rem;
+    color: lightgreen;
+  }
+}
+.snapshot {
+  display: flex;
+  gap: 2rem;
+  justify-content: space-evenly;
+  align-items: center;
+  form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
+#description {
+  width: 18rem !important;
+  height: 8rem;
+  width: max-content;
+}
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.8;
+}
+.prof-picture {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgb(200, 193, 216) border-box;
+  border: 1px solid transparent;
+}
+@media screen and (max-width: 880px) {
+  .snapshot{
+    flex-direction: column;
+  }
+  .logo {
+    display: none;
+  }
+}

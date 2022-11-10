@@ -1,0 +1,58 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+      
+    <mat-toolbar> {{ user.firstName }} {{ user.lastName}}</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item (click)="navigateTo('/home')"  routerLinkActive="active" ariaCurrentWhenActive="page"><mat-icon>home </mat-icon>  Home</a>
+      <a mat-list-item (click)="navigateTo('/rewards')" routerLinkActive="active" ariaCurrentWhenActive="page"><mat-icon>payment</mat-icon>
+        Rewards</a>
+      <a mat-list-item (click)="navigateTo('/profile')" routerLinkActive="active" ariaCurrentWhenActive="page"><mat-icon>call_to_action</mat-icon>
+        My Coupons</a>
+        <a mat-list-item (click)="navigateTo('validation')" routerLinkActive="active" ariaCurrentWhenActive="page"><mat-icon>verified_user</mat-icon>
+          Validations</a>
+      <a mat-list-item (click)="navigateTo('login')"><mat-icon>logout</mat-icon> Logout</a>
+
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar class="navToolbar" color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span class="logo"><img src="./assets/thumbnail_greenGo-removebg-preview.png" width="130px"> </span>
+      <div class="a4"> 
+        <span>{{ coinAmount }}</span>
+        <span><mat-icon> monetization_on</mat-icon>
+        </span>
+      </div>
+      <div class="icons">
+        <mat-icon (click)="navigateTo('recognition')" >mic</mat-icon>
+        <mat-icon (click)="AddPhoto()" >add_a_photo</mat-icon>
+      </div>
+
+
+    </mat-toolbar>
+    <app-camera (pictureTaken)="handleImage($event)" *ngIf="openCamera && !webcamImage"></app-camera>
+    <mat-card class="snapshot" *ngIf="isWebCamOpen">
+      <img [src]="webcamImage.imageAsDataUrl" />
+      <form #f>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Leave a comment</mat-label>
+          <input matInput name="description" id="description"  [(ngModel)]="description" placeholder="Add description">
+        </mat-form-field>
+        <button mat-raised-button (click)="uploadImg()"> Upload</button>
+      </form>
+    </mat-card>
+    <div class="content" [@slideInAnimation]="o.isActivated ? o.activatedRoute : ''">
+      <router-outlet #o="outlet"></router-outlet>
+  </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

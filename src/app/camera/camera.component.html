@@ -1,0 +1,26 @@
+<!-- <div class="container">
+    <h1>Angular Webcam Capture Image from Camera</h1>
+    <div>
+            <webcam 
+                [trigger]="triggerObservable"
+                [height]="500" [width]="300" 
+                (imageCapture)="handleImage($event)"></webcam>
+            <button (click)="triggerSnapshot();">Take A Snapshot</button>
+    </div>
+        <div id="results">Your captured image will appear here...</div>
+        <img src="{{ captureImage }}" height="300px">
+</div> -->
+<div style="text-align:center">
+	<div>
+		<webcam [height]="500" [width]="500" [trigger]="triggerObservable" (imageCapture)="handleImage($event)" *ngIf="showWebcam"
+		 [allowCameraSwitch]="allowCameraSwitch" [switchCamera]="nextWebcamObservable" [videoOptions]="videoOptions" (cameraSwitched)="cameraWasSwitched($event)" [imageQuality]="0.4"
+		 (initError)="handleInitError($event)"></webcam>
+		<br/>
+		<div class="actionBtn" (click)="triggerSnapshot();" title="Take Picture"><mat-icon>photo_camera</mat-icon></div>
+	</div>
+</div>
+
+<h4 *ngIf="errors.length > 0">Messages:</h4>
+<ul *ngFor="let error of errors">
+	<li>{{error | json}}</li>
+</ul>

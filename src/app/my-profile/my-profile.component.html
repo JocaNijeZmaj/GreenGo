@@ -1,0 +1,23 @@
+
+
+<div class="container" >
+
+  <div class="card" *ngFor="let cupon of myCupons">
+    <div class="main">
+      <div class="co-img">
+        <img
+          src='{{ cupon.logo }}'
+          alt=""
+        />
+      </div>
+      <div class="vertical"></div>
+      <div class="content">
+        <h2>{{ cupon.title }}</h2>
+        <h1>{{ cupon.procent }} <span>Coupon</span></h1>
+        <p>Valid till {{ cupon.valid }} </p>
+        <h2>Price : {{ cupon.price }}</h2>
+
+      </div>
+    </div>
+  </div>
+</div>
