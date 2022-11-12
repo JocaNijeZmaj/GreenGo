@@ -4,25 +4,21 @@ import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class RegisterComponent implements OnInit {
 
   constructor(private loginService : LoginService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  onSubmit(form : NgForm){
+    onSubmit(form : NgForm){
     const email = form.controls["username"].value ;
     const password = form.controls["password"].value ;
 
-    this.loginService.login(email, password)
-  }
-  loginTest(){
-    this.loginService.login('test@gmail.com', '123456')
-  }
-
+    this.loginService.register(email, password)
+    }
 }

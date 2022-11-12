@@ -1,7 +1,7 @@
 <div class="main">
   <mat-card *ngFor="let val of validations" [ngClass]="!validate ? 'good' : 'bad' ">
     <mat-card-title>{{val.description}}</mat-card-title>
-    <img mat-card-image [src]="'https://192.168.191.251:5051/api/files/'+val.path" alt="">
+    <img mat-card-image alt="">
     <mat-card-subtitle>
       <div class="check" (click)="validate(true,val)" >
         <mat-icon >done</mat-icon>

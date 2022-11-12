@@ -6,11 +6,13 @@ import { MyProfileComponent } from './my-profile/my-profile.component';
 import { NavComponent } from './nav/nav.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { RecognitionComponent } from './recognition/recognition.component';
+import { RegisterComponent } from './register/register.component';
 import { RewardsComponent } from './rewards/rewards.component';
 import { ValidationComponent } from './validation/validation.component';
 
 const routes: Routes = [
   { path:'login', component: LoginComponent},
+  { path:'register', component: RegisterComponent},
   { path: '', component: NavComponent,
   children: [
     {path: 'home', component: HomeComponent},

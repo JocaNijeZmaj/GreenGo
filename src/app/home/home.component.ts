@@ -12,6 +12,6 @@ export class HomeComponent implements OnInit {
   constructor(private gateWay : ImageService) { }
 
   ngOnInit(): void {
-    this.gateWay.getAQI().subscribe((res) => console.log(res))
+    
   }
 }

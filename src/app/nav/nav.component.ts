@@ -21,7 +21,7 @@ export class NavComponent implements OnInit {
 
   userPhoto!:string
   user = this.loginService.currentUser;
-  coinAmount = 0;
+  coinAmount! : number;
   description! : string;
   openCamera = false;
   public webcamImage!: WebcamImage;
@@ -41,19 +41,19 @@ export class NavComponent implements OnInit {
      ) {}
   ngOnInit(): void {
  
-  
-  this.coinAmount = this.user?.points;
-    this.cuponService.getCuponSubject.subscribe(res =>{
-      console.log('bouth');
-      this.coinAmount = this.loginService.currentUser?.points;
-    })
+  this.coinAmount = this.cuponService.points;
+  // this.coinAmount = this.user?.points;
+  //   this.cuponService.getCuponSubject.subscribe(res =>{
+  //     console.log('bouth');
+  //     this.coinAmount = this.loginService.currentUser?.points;
+  //   })
 
-    this.loginService.validatedAll.subscribe(res =>{
-      this.loginService.currentUser.points++;
-      this.coinAmount = this.loginService.currentUser.points;
-      localStorage.setItem('userData', JSON.stringify(this.loginService.currentUser));
+  //   this.loginService.validatedAll.subscribe(res =>{
+  //     this.loginService.currentUser.points++;
+  //     this.coinAmount = this.loginService.currentUser.points;
+  //     localStorage.setItem('userData', JSON.stringify(this.loginService.currentUser));
 
-    })
+  //   })
   }
 
   AddPhoto(){
@@ -64,22 +64,25 @@ export class NavComponent implements OnInit {
     this.router.navigate([route]);
   }
 
+  logout(){
+    this.loginService.logout()
+  }
 
   handleImage(webcamImage: WebcamImage) {
     this.webcamImage = webcamImage;
     this.isWebCamOpen = true;
   }
-  uploadImg(){
-    const sendImg = {
-      imageBase64: this.webcamImage.imageAsBase64,
-      user_id: this.loginService.currentUser.id,
-      description: this.description
-    }
-    console.log(this.webcamImage);
-    this.imageSer.addImg(sendImg).subscribe((res : any)=>{
-      console.log(res);
-    });
-    this.isWebCamOpen = false ;
-  }
+  // uploadImg(){
+  //   const sendImg = {
+  //     imageBase64: this.webcamImage.imageAsBase64,
+  //     user_id: this.loginService.currentUser.id,
+  //     description: this.description
+  //   }
+  //   console.log(this.webcamImage);
+  //   this.imageSer.addImg(sendImg).subscribe((res : any)=>{
+  //     console.log(res);
+  //   });
+  //   this.isWebCamOpen = false ;
+  // }
 
 }

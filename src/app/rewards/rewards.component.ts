@@ -55,17 +55,9 @@ export class RewardsComponent implements OnInit {
 
   buyCupon(cupon : any){
     this.cuponService.myCupons.push(cupon);
-    this.cuponService.buyCupon(this.loginService.currentUser.id, cupon.price).subscribe({
-      next : (res)=>{
-        console.log(res);
-        this.loginService.currentUser = res;
-        this.cuponService.getCuponSubject.next(true);
-
-      },
-      error : (e)=>{
-        console.log(e);
-      }
-    })
+    console.log(this.cuponService.points)
+    
+    this.cuponService.buyCupon(cupon.price)
   }
 
 }

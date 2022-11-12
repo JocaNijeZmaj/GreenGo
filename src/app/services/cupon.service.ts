@@ -8,13 +8,13 @@ import { Subject } from 'rxjs';
 export class CuponService {
 
   getCuponSubject = new Subject<any>();
+  points = 50;
   myCupons : any[] = [];
 
   constructor(private http : HttpClient) { }
 
-  buyCupon(userId : number, spentPoints : number){
-
-    const payload = { userId : userId, spentPoints : spentPoints};
-    return this.http.post("https://192.168.191.251:5051/api/buy",payload);
+  buyCupon(spentPoints : number){
+    this.points = this.points - spentPoints;
+    return this.points
   }
 }

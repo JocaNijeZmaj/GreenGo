@@ -19,7 +19,7 @@
             
     </div>
     <div class="login">
-        <p>Login to Green.Go!!</p>
+        <p>Register to Green.Go!!</p>
         <span id="googleButton"></span>
 <form #f="ngForm" (ngSubmit)="onSubmit(f)">
     <div class="form first">
@@ -48,13 +48,14 @@
                     minlength="6"
                     required>
                 </div>
-                <a href="/register">Register Here</a>
+
+                <a routerLink="/login">Back to login</a>
+
 
                 <button  [disabled]="!f.valid" type="submit"
                 [ngClass]="f.valid ? 'validButton' : 'invalidButton' ">
                     Submit
                 </button>
-                <button (click)="loginTest()" mat-button>Login as Test User</button>
             </div>
 
         </div>

@@ -17,6 +17,14 @@ import { RecognitionComponent } from './recognition/recognition.component';
 import { ValidationComponent } from './validation/validation.component';
 import { ValidationService } from './services/validation.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { AngularFireModule } from '@angular/fire/compat'
+import { environment } from 'src/environments/environment';
+import { FirestoreModule } from '@angular/fire/firestore';
+import { RegisterComponent } from './register/register.component';
+
+
+
+
 
 
 @NgModule({
@@ -29,7 +37,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     RewardsComponent,
     PageNotFoundComponent,
     RecognitionComponent,
-    ValidationComponent
+    ValidationComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +48,9 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     WebcamModule,
     HttpClientModule,
     LoginModule,
-    FormsModule
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    FirestoreModule,
   ],
   providers: [ValidationService],
   bootstrap: [AppComponent]

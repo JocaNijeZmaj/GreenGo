@@ -19,11 +19,6 @@ export class MyProfileComponent implements OnInit {
 
   ngOnInit() {
     this.myCupons = this.cuponService.myCupons;
-    this.currentUser = this.loginService.currentUser;
-    if (this.currentUser.firstName === 'Jovan'){
-      this.userPhoto = "https://avatars.githubusercontent.com/u/100790659?s=400&u=34cda8e582a149059b4892f3c0754cfd7ad62eaf&v=4"
-    }
-    this.userPhoto = "https://avatars.githubusercontent.com/u/75267676?v=4"
-  }
 
+}
 }
